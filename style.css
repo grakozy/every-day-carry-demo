@@ -96,10 +96,28 @@ button:active {
     display: none;
 }
 
+.suggestions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
 .suggestions h2 {
     color: #333;
     font-size: 1.5em;
-    margin-bottom: 16px;
+    margin: 0;
+}
+
+.clear-btn {
+    width: auto;
+    padding: 8px 16px;
+    background: #6c757d;
+    font-size: 0.9em;
+}
+
+.clear-btn:hover {
+    background: #5a6268;
 }
 
 #itemsList {

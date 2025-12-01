@@ -56,6 +56,16 @@ function displaySuggestions(items) {
     suggestionsDiv.classList.remove('hidden');
 }
 
+// Clear form and suggestions
+function clearForm() {
+    const activityInput = document.getElementById('activityInput');
+    const suggestionsDiv = document.getElementById('suggestions');
+    
+    activityInput.value = '';
+    suggestionsDiv.classList.add('hidden');
+    activityInput.focus();
+}
+
 // Handle form submission
 document.getElementById('activityForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -71,4 +81,7 @@ document.getElementById('activityForm').addEventListener('submit', function(e) {
     const suggestions = getSuggestions(activity);
     displaySuggestions(suggestions);
 });
+
+// Handle clear button click
+document.getElementById('clearButton').addEventListener('click', clearForm);
 
