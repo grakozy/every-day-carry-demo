@@ -1,0 +1,11 @@
+# CodeRabbit Configuration
+# This is a placeholder file for CodeRabbit integration
+# Configure your CodeRabbit settings here when ready
+
+# Example configuration (uncomment and customize as needed):
+# language: javascript
+# review_type: full
+# exclude_paths:
+#   - node_modules/
+#   - .git/
+

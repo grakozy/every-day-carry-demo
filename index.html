@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDC Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>EDC Companion</h1>
+            <p class="subtitle">Plan your day, pack your essentials</p>
+        </header>
+
+        <main>
+            <form id="activityForm">
+                <div class="form-group">
+                    <label for="activityInput">What are you doing today?</label>
+                    <input 
+                        type="text" 
+                        id="activityInput" 
+                        placeholder="e.g., gym, office, hiking, travel"
+                        autocomplete="off"
+                    >
+                </div>
+                <button type="submit">Get Suggestions</button>
+            </form>
+
+            <div id="suggestions" class="suggestions hidden">
+                <h2>Suggested Items:</h2>
+                <ul id="itemsList"></ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
