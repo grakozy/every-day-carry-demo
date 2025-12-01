@@ -99,14 +99,30 @@ button:active {
 .suggestions-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 16px;
+}
+
+.suggestions-header > div {
+    flex: 1;
 }
 
 .suggestions h2 {
     color: #333;
     font-size: 1.5em;
+    margin: 0 0 4px 0;
+}
+
+.progress-text {
+    color: #666;
+    font-size: 0.9em;
     margin: 0;
+    font-weight: 400;
+}
+
+.progress-text.complete {
+    color: #28a745;
+    font-weight: 600;
 }
 
 .clear-btn {
@@ -124,18 +140,48 @@ button:active {
     list-style: none;
 }
 
-#itemsList li {
+.item-row {
+    display: flex;
+    align-items: center;
     padding: 12px 16px;
     margin-bottom: 8px;
     background: #f8f9fa;
     border-radius: 8px;
     border-left: 4px solid #667eea;
     color: #333;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    cursor: pointer;
 }
 
-#itemsList li:hover {
+.item-row:hover {
     transform: translateX(4px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #e9ecef;
+}
+
+.item-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: #667eea;
+    flex-shrink: 0;
+}
+
+.item-label {
+    flex: 1;
+    cursor: pointer;
+    user-select: none;
+    transition: text-decoration 0.2s, color 0.2s;
+}
+
+.item-row:has(.item-checkbox:checked) {
+    background: #d4edda;
+    border-left-color: #28a745;
+}
+
+.item-row:has(.item-checkbox:checked) .item-label {
+    text-decoration: line-through;
+    color: #6c757d;
 }
 
