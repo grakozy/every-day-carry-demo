@@ -37,7 +37,25 @@ function getSuggestions(activity) {
     return ['wallet', 'phone', 'keys', 'water bottle'];
 }
 
-// Display suggestions
+// Update progress counter
+function updateProgress() {
+    const itemsList = document.getElementById('itemsList');
+    const checkboxes = itemsList.querySelectorAll('input[type="checkbox"]');
+    const checkedCount = itemsList.querySelectorAll('input[type="checkbox"]:checked').length;
+    const totalCount = checkboxes.length;
+    const progressText = document.getElementById('progressText');
+    
+    progressText.textContent = `${checkedCount} / ${totalCount} items packed`;
+    
+    // Update progress text color when complete
+    if (checkedCount === totalCount && totalCount > 0) {
+        progressText.classList.add('complete');
+    } else {
+        progressText.classList.remove('complete');
+    }
+}
+
+// Display suggestions with checkboxes
 function displaySuggestions(items) {
     const suggestionsDiv = document.getElementById('suggestions');
     const itemsList = document.getElementById('itemsList');
@@ -45,15 +63,48 @@ function displaySuggestions(items) {
     // Clear previous items
     itemsList.innerHTML = '';
     
-    // Add new items
+    // Add new items with checkboxes
     items.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = item;
+        li.className = 'item-row';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `item-${item.replace(/\s+/g, '-')}`;
+        checkbox.className = 'item-checkbox';
+        
+        const label = document.createElement('label');
+        label.htmlFor = checkbox.id;
+        label.textContent = item;
+        label.className = 'item-label';
+        
+        // Add click handler to update progress
+        checkbox.addEventListener('change', updateProgress);
+        
+        li.appendChild(checkbox);
+        li.appendChild(label);
         itemsList.appendChild(li);
     });
     
+    // Initialize progress
+    updateProgress();
+    
     // Show suggestions
     suggestionsDiv.classList.remove('hidden');
+}
+
+// Clear form and suggestions
+function clearForm() {
+    const activityInput = document.getElementById('activityInput');
+    const suggestionsDiv = document.getElementById('suggestions');
+    const itemsList = document.getElementById('itemsList');
+    
+    activityInput.value = '';
+    if (itemsList) {
+        itemsList.innerHTML = '';
+    }
+    suggestionsDiv.classList.add('hidden');
+    activityInput.focus();
 }
 
 // Handle form submission
@@ -71,4 +122,7 @@ document.getElementById('activityForm').addEventListener('submit', function(e) {
     const suggestions = getSuggestions(activity);
     displaySuggestions(suggestions);
 });
+
+// Handle clear button click
+document.getElementById('clearButton').addEventListener('click', clearForm);
 

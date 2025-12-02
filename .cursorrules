@@ -1,0 +1,13 @@
+# Cursor Rules for EDC Companion
+
+## GitHub Integration
+- This project is connected to GitHub: https://github.com/grakozy/every-day-carry-demo
+- When reviewing pull requests, fetch PR comments and reviews using GitHub CLI
+- Apply suggested changes from code reviews when appropriate
+- Make updates directly to the codebase based on review feedback
+
+## Code Review Workflow
+- When asked to review PR feedback, use `gh pr view` and `gh pr view --comments` to get review details
+- Apply fixes suggested in PR reviews
+- Commit changes with descriptive messages referencing the PR review
+
